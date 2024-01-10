@@ -20,9 +20,9 @@ aruco_dict = cv2.aruco.getPredefinedDictionary(cv2.aruco.DICT_5X5_50)
 detector = cv2.aruco.ArucoDetector(aruco_dict, parameters)
 
 # load image
-img = cv2.imread("flat.jpg")
+img = cv2.imread("./source/flat.jpg")
 height, width = img.shape[:2]
-img = cv2.resize(img, (width // 20, height // 20), interpolation=cv2.INTER_AREA)
+img = cv2.resize(img, (width // 10, height // 10), interpolation=cv2.INTER_AREA)
 
 # get aruco marker
 markerCorners, markerIds, rejectedCandidates = detector.detectMarkers(img)
@@ -40,8 +40,8 @@ pixel_cm_ratio = aruco_perimeter / 20
 
 customdetect = HomogeneousBgDetector()
 contours = customdetect.detect_objects(img)
-img2 = cv2.drawContours(img, contours, -1, (255, 255, 255), 3)
-cv2.imwrite("flat_contour.jpg", img2)
+#img2 = cv2.drawContours(img, contours, -1, (255, 255, 255), 3)
+#cv2.imwrite("flat_contour.jpg", img2)
 # draw objects boundaries
 for cnt in contours:
 
